@@ -16,7 +16,7 @@ exports.create= function(req, res ){
     })
 }
 
-exports.apicreate= function(req, res ){
+exports.apiCreate= function(req, res ){
     let post = new Post(req.body, req.apiUser._id)
     post.create().then(function(newId){
         res.json("congo")
