@@ -48,7 +48,7 @@ export default class Search {
   }
 
   sendRequest() {
-    axios.post('/search', {_csrf: this.csrf,searchTerm: this.inputField.value}).then(response => {
+    axios.post('/search', {_csrf: this._csrf,searchTerm: this.inputField.value}).then(response => {
       console.log(response.data)
       this.renderResultsHTML(response.data)
     }).catch(() => {
