@@ -21,9 +21,16 @@
     <p class="text-muted small mb-4">
       <a href="/profile/<%=post.author.username%>"><img class="avatar-tiny" src="<%=post.author.avatar%>"></a>
       Posted by <a href="/profile/<%=post.author.username%>"><%=post.author.username%></a> on <%= post.createDate.getMonth() + 1%>/<%= post.createDate.getDate()%>/<%= post.createDate.getFullYear()%></p>
+    
+    <div class="img-thumbnail">
+      <div class="x">
+      <img class=" img-fluid  mx-auto d-block" src="<%= post.imageurl %>">
+      </div>
 
-    <div class="body-content">
-      <%-filterUserHTML(post.body)%>
+      <div class=" img-thumbnail body-content" style="margin:10px; background-color:#dee2e6; padding:10px;">
+        <%-filterUserHTML(post.body)%>
+      </div>
+    
     </div>
 
   </div>

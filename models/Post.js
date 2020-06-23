@@ -14,11 +14,12 @@ let Post = function(data, userid, requestedPostId) {
 Post.prototype.cleanUp = function() {
   if (typeof(this.data.title) != "string") {this.data.title = ""}
   if (typeof(this.data.body) != "string") {this.data.body = ""}
-
+  if (typeof(this.data.imageurl) != "string") {this.data.body = ""}
   // get rid of any bogus properties
   this.data = {
     title: sanitizeHTML(this.data.title.trim(), {allowedTags: [], allowedAttributes: {}}),
     body: sanitizeHTML(this.data.body.trim(), {allowedTags: [], allowedAttributes: {}}),
+    imageurl: sanitizeHTML(this.data.imageurl.trim(), {allowedTags: [], allowedAttributes: {}}),
     createDate: new Date(),
     author: ObjectID(this.userid)
   }
@@ -27,6 +28,7 @@ Post.prototype.cleanUp = function() {
 Post.prototype.validate = function() {
   if (this.data.title == "") {this.errors.push("You must provide a title.")}
   if (this.data.body == "") {this.errors.push("You must provide post content.")}
+  if (this.data.imageurl == "") {this.errors.push("You must provide proper image url.")}
 }
 
 Post.prototype.create = function() {
@@ -69,7 +71,7 @@ Post.prototype.actuallyUpdate = function() {
     this.cleanUp()
     this.validate()
     if (!this.errors.length) {
-      await postsCollection.findOneAndUpdate({_id: new ObjectID(this.requestedPostId)}, {$set: {title: this.data.title, body: this.data.body}})
+      await postsCollection.findOneAndUpdate({_id: new ObjectID(this.requestedPostId)}, {$set: {title: this.data.title, imageurl:this.data.imageurl,  body: this.data.body}})
       resolve("success")
     } else {
       resolve("failure")
@@ -84,6 +86,7 @@ Post.reusablePostQuery = function(uniqueOperations, visitorId) {
       {$project: {
         title: 1,
         body: 1,
+        imageurl: 1,
         createDate: 1,
         authorId: "$author",
         author: {$arrayElemAt: ["$authorDocument", 0]}

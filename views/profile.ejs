@@ -2,19 +2,25 @@
 
 <div class="container py-md-5 container--narrow">
   <%- include("includes/flash")%>
-
-    <%-include("includes/flash")%>
-
+  
     <%-include("includes/profileShared")%>
 
-    <div class="list-group">
-     <%posts.forEach(function(post){%>
-        <a href="/post/<%= post._id%>" class="list-group-item list-group-item-action">
-        <img class="avatar-tiny" src="<%=post.author.avatar%>">
-        <strong><%=post.title%></strong> on <%= post.createDate.getMonth() + 1%>/<%= post.createDate.getDate()%>/<%= post.createDate.getFullYear()%>
+    <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+      <%posts.forEach(function(post){%>
+      <a href="/post/<%= post._id%>" class="col-md-3 col-sm-6 ">
+          <div class="img-thumbnail" style="padding:5px;">
+            <img src="<%=post.imageurl%>" style="width:100%;">
+            <div class="caption">
+				      <h4><%=post.title%></h4>
+			      </div>
+            <p>
+				      on <%= post.createDate.getMonth() + 1%>/<%= post.createDate.getDate()%>/<%= post.createDate.getFullYear()%>
+			      </p>
+          </div>
       </a>
-     <%})%>
+      <%})%>
     </div>
+    
   </div>
 
   <%-include("includes/footer")%>

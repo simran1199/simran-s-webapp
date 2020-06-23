@@ -44,6 +44,15 @@ body{
   top: -1px;
 }
 
+.y{
+  width: 100px;
+  height: 100px;
+  margin-right: 4px;
+  position: relative;
+  top: -1px;
+}
+
+
 .form-control-title {
   font-size: 2rem;
   font-weight: 500;
@@ -54,6 +63,15 @@ body{
   line-height: 1.75;
   color: #292929;
 }
+
+.x img{
+  width: 400px;
+  height: 250px;
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 
 .body-content p,
 .body-content ul,
