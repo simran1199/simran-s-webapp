@@ -6,19 +6,27 @@
     <%- include("includes/flash")%>
     
     <%if(posts.length){%>
-      <h2 class="text-center mb-4">The Latests from those You Follow</h2>
-      <div class="list-group">
-     <%posts.forEach(function(post){%>
-        <a href="/post/<%= post._id%>" class="list-group-item list-group-item-action">
-        <img class="avatar-tiny" src="<%=post.author.avatar%>">
-        <strong><%=post.title%></strong><span class="text-muted small">by <%=post.author.username%> on <%= post.createDate.getMonth() + 1%>/<%= post.createDate.getDate()%>/<%= post.createDate.getFullYear()%></span>
-      </a>
-     <%})%>
-    </div>
+      <h2 class="text-center mb-4"><span style="font-weight: 600;">Here are the Latests from those You Follow</span></h2>
+      <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+        <%posts.forEach(function(post){%>
+          <a href="/post/<%= post._id%>" class="col-md-3 col-sm-6 text-center">
+            <div class="img-thumbnail" style="padding:5px;">
+              <img src="<%=post.imageurl%>" style="width:100%;">
+              <div class="caption">
+                <h4><%=post.title%></h4>
+              </div>
+              <p><span class="text-muted small">by <img class="avatar-tiny" src="<%=post.author.avatar%>"></span><%=post.author.username%></p>
+              <p>
+                on <%= post.createDate.getMonth() + 1%>/<%= post.createDate.getDate()%>/<%= post.createDate.getFullYear()%>
+              </p>
+            </div>
+        </a>
+        <%})%>
+      </div>
     <%}else{%>
       <div class="text-center">
       <h2>Hello <strong><%= user.username %></strong>, your feed is empty.</h2>
-      <p class="lead text-muted">Your feed displays the latest posts from the people you follow. If you don&rsquo;t have any friends to follow that&rsquo;s okay; you can use the &ldquo;Search&rdquo; feature in the top menu bar to find content written by people with similar interests and then follow them.</p>
+      <p class="lead text-muted">Your feed displays the latest posts from the people you follow. If you don&rsquo;t have any friends to follow that&rsquo;s okay; you can use the &ldquo;Search&rdquo; feature in the top menu bar to find content written by people with similar interests and then follow them for further intellectual and useful posts.</p>
     </div>  
     <%}%>
     </div>
