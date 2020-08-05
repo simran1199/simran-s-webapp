@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title><%=typeof(title)== "undefined" ? 'NomadicLusts' : `${title} | NomadicLusts` %></title>
+  <title><%=typeof(title)== "undefined" ? 'GeeksRoom' : `${title} | GeeksRoom` %></title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -15,7 +15,7 @@
 <div class="container py-md-5" id="landing-header">
   <header class="header-bar mb-3";>
     <div class="container d-flex flex-column flex-md-row align-items-center p-3">
-      <h4 class="my-0 mr-md-auto font-weight-normal"><a href="/" class="text-white">NomadicLusts</a></h4>
+      <h4 class="my-0 mr-md-auto font-weight-normal"><a href="/" class="text-white">GeeksRoom</a></h4>
       <form action="/login" method="POST" class="mb-0 pt-2 pt-md-0">
         <div class="row align-items-center">
           <div class="col-md mr-0 pr-md-0 mb-3 mb-md-0">
@@ -37,10 +37,11 @@
 
   <div class="row align-items-center">
     <div class="col-lg-7 py-3 py-md-5">
-      <h1 class="display-3"><strong>Go See Write!!</strong></h1>      
-      <p class="lead text-muted "><strong>&ldquo;The World is a Book and those who do not travel read only pages.&rdquo;</strong></p>
-      <P class="lead text-muted">Do you love to Travel, mishap and adventure in this beautiful and bizarre world? Then let&rsquo;s explore these mesmerizingly beautiful 
-      destinations from all over the world!</p>
+      <h1 class="display-3"><strong>Explore Connect and Write!!</strong></h1>      
+      <p class="lead text-muted "><span style="font-weight: 560;">&ldquo;Progress has little to do with speed but much to do with direction!!&rdquo;</span></p>
+      <P class="lead text-muted"><span style="font-weight: 350;">Is learning new geeky hacks your favourite passtime? And you have a quest to explore new and trending technologies? 
+        Then Yes!! your search ends here...and now let&rsquo;s explore the newest coding and technology posts from geeks which will surely ignite your knowledge.</span>
+      </p>
     </div>
     <div class="col-lg-5 pl-lg-5 pb-3 py-lg-5">
       <form action="/register" method="POST" id="registration-form">
@@ -50,21 +51,21 @@
         <% }) %>
 
           <div class="form-group">
-            <label for="username-register" class="text-muted mb-1"><small>Username</small></label>
+            <label for="username-register" class="text-muted mb-1"><small><span style="font-weight: 600;">Username</span></small></label>
             <input name="username" id="username-register" class="form-control " type="text" placeholder="Pick a username" autocomplete="off">
           </div>
           
           <div class="form-group">
-            <label for="email-register" class="text-muted mb-1"><small>Email</small></label>
+            <label for="email-register" class="text-muted mb-1"><small><span style="font-weight: 600;">Email</span></small></label>
             <input name="email" id="email-register" class="form-control" type="text" placeholder="you@example.com" autocomplete="off">
           </div>
           
           <div class="form-group">
-            <label for="password-register" class="text-muted mb-1"><small>Password</small></label>
+            <label for="password-register" class="text-muted mb-1"><small><span style="font-weight: 600;">Password</span></small></label>
             <input name="password" id="password-register" class="form-control" type="password" placeholder="Create a password">
           </div>
           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-          <button type="submit" class="py-3 mt-4 btn btn-lg btn-success btn-block">Sign up for NomadicLusts</button>
+          <button type="submit" class="py-3 mt-4 btn btn-lg btn-success btn-block">Sign up for GeeksRoom</button>
           
         </form>
       </div>

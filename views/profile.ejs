@@ -7,7 +7,7 @@
 
     <div class="row text-center" style="display:flex; flex-wrap:wrap;">
       <%posts.forEach(function(post){%>
-      <a href="/post/<%= post._id%>" class="col-md-3 col-sm-6 ">
+      <a href="/post/<%= post._id%>" class="col-md-3 col-sm-6  text-center">
           <div class="img-thumbnail" style="padding:5px;">
             <img src="<%=post.imageurl%>" style="width:100%;">
             <div class="caption">
