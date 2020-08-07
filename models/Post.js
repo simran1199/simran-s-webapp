@@ -4,10 +4,11 @@ const ObjectID = require('mongodb').ObjectID
 const User = require('./User')
 const sanitizeHTML = require('sanitize-html')
 
-let Post = function(data, userid, requestedPostId) {
+let Post = function(data, userid, email,requestedPostId) {
   this.data = data
   this.errors = []
   this.userid = userid
+  this.email = email
   this.requestedPostId = requestedPostId
 }
 
@@ -21,7 +22,8 @@ Post.prototype.cleanUp = function() {
     body: sanitizeHTML(this.data.body.trim(), {allowedTags: [], allowedAttributes: {}}),
     imageurl: sanitizeHTML(this.data.imageurl.trim(), {allowedTags: [], allowedAttributes: {}}),
     createDate: new Date(),
-    author: ObjectID(this.userid)
+    author: ObjectID(this.userid),
+    email: this.email
   }
 }
 

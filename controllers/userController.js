@@ -2,6 +2,8 @@ const User = require('../models/User')
 const Post = require('../models/Post')
 const Follow= require("../models/Follow")
 const jwt = require('jsonwebtoken')
+const sendgrid = require('@sendgrid/mail')
+sendgrid.setApiKey(process.env.SENDGRIDAPIKEY)
 
 exports.apiGetPostsByUsername = async function(req, res) {
   try {
@@ -76,7 +78,7 @@ exports.mustBeLoggedIn =function(req, res,next){
 exports.login = function(req, res) {
   let user = new User(req.body)
   user.login().then(function(result) {
-    req.session.user = {avatar: user.avatar, username: user.data.username, _id: user.data._id}
+    req.session.user = {avatar: user.avatar, username: user.data.username, _id: user.data._id, email: user.data.email}
     req.session.save(function() {
       res.redirect('/')
     })
@@ -107,7 +109,14 @@ exports.logout = function(req, res) {
 exports.register = function(req, res) {
   let user = new User(req.body)
   user.register().then(() => {
-    req.session.user = {username: user.data.username, avatar: user.avatar,_id: user.data._id}
+    req.session.user = {username: user.data.username, avatar: user.avatar,_id: user.data._id, email: user.data.email}
+    sendgrid.send({
+      to: `${user.data.email}`,
+      from: 'fromgeeksroom@gmail.com',
+      subject: 'Welcome To GeeksRoom!!',
+      text: `GeeksRoom welcomes you to the whole new world where you learn and grow and connect to people with same interests and who want to explore the newest of technologies.ThankYou ${user.data.username} for sigining up for GeeksRoom`,
+      html: `<h2>GeeksRoom Congratulates you !!</h2><p>Dear ${user.data.username},</p><p>GeeksRoom welcomes you to the whole new world where you learn and grow and connect to people with same interests and who want to explore the newest of technologies.</p><p>ThankYou ${user.data.username} for sigining up for GeeksRoom</p>`
+  })
     req.session.save(function() {
       res.redirect('/')
     })
