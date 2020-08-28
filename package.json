@@ -21,7 +21,7 @@
     "connect-mongo": "3.0.0",
     "cors": "2.8.5",
     "csurf": "1.10.0",
-    "dompurify": "1.0.10",
+    "dompurify": "2.0.3",
     "dotenv": "8.0.0",
     "ejs": "2.6.1",
     "express": "4.16.4",
